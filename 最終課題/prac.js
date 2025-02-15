@@ -1,19 +1,36 @@
 "use strict";
 
 const save_btn = document.getElementById('save_btn');
+const textinput = document.getElementById('text');
+
 save_btn.addEventListener('click', function () {
-  const textarea = document.getElementById('text');
-  const text = textarea.value.trim();
+  // const textarea = document.getElementById('text');
+  const text = textinput.value.trim();
   if (text) {
     const memos = JSON.parse(localStorage.getItem('memos')) || [];
     memos.push(text);
     localStorage.setItem('memos', JSON.stringify(memos));
-    textarea.value = '';
+    textinput.value = '';
     displayMemos();
   } else {
     alert('文字を入力してください。');
   }
+}) 
+
+ // 文字数カウント
+textinput.addEventListener('input', function(){
+  const textlength = textinput.value.length;
+  const count = document.getElementById('count');
+  count.textContent = textlength;
+  if (textlength > 50){
+    // textinput.setAttribute('class', 'bg_textarea');
+    textinput.classList.add('bg_textarea');
+  }else{
+    // textinput.removeAttribute('class');
+    textinput.classList.remove('bg_textarea');
+  }
 })
+
 
 
 function displayMemos() {
@@ -69,5 +86,8 @@ textarea.addEventListener('keydown', function(event) {
   if (event.key === 'Enter') {
     event.preventDefault(); // デフォルトの動作を防ぐ
     save_btn.click(); // save_btnのクリックイベントを発生させる
+    textinput.classList.remove('bg_textarea');
+    const count = document.getElementById('count');
+    count.textContent = '';
   }
 });
