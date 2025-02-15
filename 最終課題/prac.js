@@ -6,14 +6,19 @@ const textinput = document.getElementById('text');
 save_btn.addEventListener('click', function () {
   // const textarea = document.getElementById('text');
   const text = textinput.value.trim();
+  const length = text.length;
   if (text) {
-    const memos = JSON.parse(localStorage.getItem('memos')) || [];
-    memos.push(text);
-    localStorage.setItem('memos', JSON.stringify(memos));
-    textinput.value = '';
-    displayMemos();
+    if (length < 50){
+      const memos = JSON.parse(localStorage.getItem('memos')) || [];
+      memos.push(text);
+      localStorage.setItem('memos', JSON.stringify(memos));
+      textinput.value = '';
+      displayMemos();
+    }else{
+      window.alert('文字数がオーバーしています。')
+    }
   } else {
-    alert('文字を入力してください。');
+    window.alert('文字を入力してください。');
   }
 }) 
 
@@ -83,11 +88,17 @@ change_color.addEventListener('click', function(){
 // キーイベント
 const textarea = document.getElementById('text');
 textarea.addEventListener('keydown', function(event) {
+  const count_moji = document.getElementById('count');
+  const count_value = count_moji.textContent;
   if (event.key === 'Enter') {
-    event.preventDefault(); // デフォルトの動作を防ぐ
-    save_btn.click(); // save_btnのクリックイベントを発生させる
-    textinput.classList.remove('bg_textarea');
-    const count = document.getElementById('count');
-    count.textContent = '';
+    if (count_value > 50){
+      window.alert('文字数がオーバーしています。');
+    }else{
+      event.preventDefault(); // デフォルトの動作を防ぐ
+      save_btn.click(); // save_btnのクリックイベントを発生させる
+      textinput.classList.remove('bg_textarea');
+      const count = document.getElementById('count');
+      count.textContent = '';
+    }
   }
 });
