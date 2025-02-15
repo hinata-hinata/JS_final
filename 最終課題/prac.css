@@ -1,0 +1,80 @@
+.save_btn {
+  border-radius: 5px;
+  background-color: rgb(171, 239, 69);
+  color: aliceblue;
+
+}
+
+.save_btn:hover {
+  border-radius: 5px;
+  background-color: aliceblue;
+  color: rgb(171, 239, 69);
+}
+
+.all_del_btn {
+  border-radius: 5px;
+  background-color: rgb(255, 96, 96);
+  color: aliceblue;
+}
+
+.all_del_btn:hover {
+  border-radius: 5px;
+  background-color: aliceblue;
+  color: rgb(255, 96, 96);
+}
+
+h1,
+h2 {
+  text-align: center;
+}
+
+.textarea {
+  height: 100px;
+  display: block;
+  margin: 0 auto;
+}
+
+body {
+  background-color: rgb(255, 242, 225);
+}
+
+.button {
+  text-align: center;
+}
+
+.memo_list {
+  width: 200px;
+  margin: auto;
+
+}
+
+.delete-btn {
+  background-color: rgb(253, 106, 106);
+  border-radius: 5px;
+  color: aliceblue;
+
+}
+
+.delete-btn:hover {
+  border-radius: 5px;
+  background-color: aliceblue;
+  color: rgb(255, 96, 96);
+  
+}
+
+.dark_mode{
+  background-color: black;
+  color: white;
+}
+
+.change_color{
+  border-radius: 50px;
+  width: 70px;
+  height: 50px;
+  position: fixed; 
+  background-color: rgb(149, 239, 177);
+}
+
+.change_color:hover{
+  opacity: 0.5;
+}
